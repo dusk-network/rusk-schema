@@ -1,0 +1,61 @@
+syntax = "proto3";
+package rusk;
+
+import "basic_fields.proto";
+import "transaction.proto";
+import "keys.proto";
+
+message Bid {
+    PoseidonCypher encrypted_data = 1;
+    BlsScalar nonce = 2;
+    BlsScalar hashed_secret_k = 3;
+    JubJubCompressed R = 4;
+    JubJubCompressed pk = 5;
+    JubJubCompressed c = 6;
+}
+
+// We will need to send a secret to encrypt the value, blinder
+// & secret
+message BidTransactionRequest {
+    // TODO: Review type
+    bytes K = 1;
+    BlsScalar bid_value = 2;
+    JubJubCompressed pk = 3;
+    JubJubCompressed R = 4;
+    BlsScalar seed = 5;
+    fixed64 expiration_ts = 6;
+    uint32 elegibility_ts = 7;
+    // The call will edit the Tx `calldata` field with the Bid fn call
+    Transaction tx = 8;
+}
+
+message BidTransactionResponse {
+    Bid bid = 1;
+    BlsScalar bid_hash = 2;
+    Transaction tx_with_calldata_set = 3;
+}
+
+message BidList {
+    repeated Bid bid_list = 1;
+}
+
+message OwnedBidsRequest {
+    ViewKey vk = 1;
+}
+
+message OwnedBidsResponse {
+    BidList owned_bids = 1;
+}
+
+
+
+service Bid {
+    // Encode inside of a Tx, a call to the Bid contract's Bid function in order
+    // to generate and add a Bid to the BidTree.
+    rpc GenerateBid(BidTransactionRequest) returns (BidTransactionResponse) {}
+    // Request a list of Bids Owned by the provided key
+    rpc ScanOwnedNotes(OwnedBidsRequest) returns (OwnedBidsResponse) {}
+
+    // Request a wirhdraw of a Bid. Not supported yet.
+    //rpc NewWithdrawBid(WithdrawBidTransactionRequest) returns (WithdrawBidTransaction) {}
+}
