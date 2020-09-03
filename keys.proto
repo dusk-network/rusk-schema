@@ -4,12 +4,12 @@ package rusk;
 import "basic_fields.proto";
 
 message SecretKey {
-    BlsScalar a = 1;
-    BlsScalar b = 2;
+    JubJubScalar a = 1;
+    JubJubScalar b = 2;
 }
 
 message ViewKey {
-    BlsScalar a = 1;
+    JubJubScalar a = 1;
     JubJubCompressed b_g = 2;
 }
 
