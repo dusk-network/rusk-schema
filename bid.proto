@@ -3,7 +3,7 @@ package rusk;
 
 import "basic_fields.proto";
 import "rusk.proto";
-import "keys.proto"
+import "keys.proto";
 
 
 // Bid representation
