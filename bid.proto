@@ -1,5 +1,6 @@
 syntax = "proto3";
 package rusk;
+option go_package = "github.com/dusk-network/dusk-blockchain/autogen";
 
 import "basic_fields.proto";
 import "rusk.proto";

@@ -1,5 +1,6 @@
 syntax = "proto3";
 package rusk;
+option go_package = "github.com/dusk-network/dusk-blockchain/autogen";
 
 service Echoer {
     rpc Echo (EchoRequest) returns (EchoResponse);
