@@ -13,7 +13,7 @@ service BlindBid {
 }
 
 message GenerateScoreRequest {
-    BlsScalar secret_k = 1;
+    BlsScalar secret_t = 1;
     BlsScalar seed = 2;
     JubJubCompressed secret_key = 3; 
     uint32 round = 4;

@@ -18,7 +18,7 @@ message Bid {
 
 // Used to Request the creation of a Bid
 message BidTransactionRequest {
-    BlsScalar secret_k = 1;
+    BlsScalar secret_t = 1;
     StealthAddress pk_r = 2;
     BlsScalar seed = 3;
     fixed64 latest_consensus_round = 4;
