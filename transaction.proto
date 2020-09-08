@@ -3,7 +3,6 @@ package rusk;
 
 import "basic_fields.proto";
 
-message TransactionInput { BlsScalar nullifier = 1; }
 message Crossover {
     JubJubCompressed value_comm = 1;
     BlsScalar nonce = 2;
@@ -25,7 +24,7 @@ message Note {
 
 message TransactionPayload {
     BlsScalar anchor = 1;
-    repeated TransactionInput inputs = 2;
+    repeated BlsScalar nullifier = 2;
     Crossover crossover = 3;
     repeated Note = 4;
     Fee fee = 5;

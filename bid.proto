@@ -18,12 +18,12 @@ message Bid {
 
 // Used to Request the creation of a Bid
 message BidTransactionRequest {
-    BlsScalar secret_k = 1;
+    BlsScalar k = 1;
     StealthAddress pk_r = 2;
     BlsScalar seed = 3;
     fixed64 latest_consensus_round = 4;
     fixed64 latest_consensus_step = 5;
-    rusk.NewTransactionRequest tx = 5;
+    //rusk.Transaction tx = 5;
 }
 
 message BidTransaction {
