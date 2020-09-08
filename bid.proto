@@ -23,7 +23,7 @@ message BidTransactionRequest {
     BlsScalar seed = 3;
     fixed64 latest_consensus_round = 4;
     fixed64 latest_consensus_step = 5;
-    rusk.NewTransactionRequest tx = 5;
+    //rusk.Transaction tx = 5;
 }
 
 message BidTransaction {
