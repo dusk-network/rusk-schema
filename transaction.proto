@@ -3,11 +3,10 @@ package rusk;
 
 import "basic_fields.proto";
 
-message TransactionInput { BlsScalar nullifier = 1; }
 message Crossover {
     JubJubCompressed value_comm = 1;
     BlsScalar nonce = 2;
-    PoseidonCypher encypted_data = 3;
+    PoseidonCipher encypted_data = 3;
 }
 message Fee {
     uint64 gas_limit = 1;
@@ -20,12 +19,12 @@ message Note {
     JubJubCompressed pk_r = 2;
     JubJubCompressed commitment = 3;
     BlsScalar nonce = 4;
-    PoseidonCypher encypted_data = 5;
+    PoseidonCipher encypted_data = 5;
 }
 
 message TransactionPayload {
     BlsScalar anchor = 1;
-    repeated TransactionInput inputs = 2;
+    repeated BlsScalar nullifier = 2;
     Crossover crossover = 3;
     repeated Note = 4;
     Fee fee = 5;
