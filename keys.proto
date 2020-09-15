@@ -23,3 +23,16 @@ message StealthAddress {
     JubJubCompressed r_g = 1;
     JubJubCompressed pk_r = 2;
 }
+
+message GenerateKeysRequest {}
+
+message GenerateKeysResponse {
+    SecretKey sk = 1;
+    ViewKey vk = 2;
+    PublicKey pk = 3;
+}
+
+service Keys {
+    rpc GenerateKeys(GenerateKeysRequest) returns (GenerateKeysResponse)
+    rpc GenerateStealthAddress(PublicKey) returns (StealthAddress)
+}
