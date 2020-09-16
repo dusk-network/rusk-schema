@@ -33,6 +33,6 @@ message GenerateKeysResponse {
 }
 
 service Keys {
-    rpc GenerateKeys(GenerateKeysRequest) returns (GenerateKeysResponse)
-    rpc GenerateStealthAddress(PublicKey) returns (StealthAddress)
+    rpc GenerateKeys(GenerateKeysRequest) returns (GenerateKeysResponse) {}
+    rpc GenerateStealthAddress(PublicKey) returns (StealthAddress) {}
 }
