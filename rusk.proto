@@ -8,4 +8,27 @@ import "blindbid.proto";
 import "transaction.proto";
 import "keys.proto";
 
+message VerifyStateTransitionRequest {
+    repeated Transaction txs = 1;
+    fixed64 height = 2;
+    bytes seed = 3;
+}
 
+message VerifyStateTransitionResponse {
+    repeated fixed64 failed_calls = 1;
+}
+
+message ExecuteStateTransitionRequest {
+    repeated Transaction txs = 1;
+    fixed64 height = 2;
+    bytes seed = 3;
+}
+
+message ExecuteStateTransitionRequest {
+    bool success = 1;
+}
+
+service State {
+    rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (VerifyStateTransitionResponse)
+    rpc ExecuteStateTransition(ExecuteStateTransitionRequest) returns (ExecuteStateTransitionResponse)
+}
