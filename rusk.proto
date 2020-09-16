@@ -26,6 +26,7 @@ message ExecuteStateTransitionRequest {
 
 message ExecuteStateTransitionResponse {
     bool success = 1;
+    string error_message = 2;
 }
 
 message Provisioner {
