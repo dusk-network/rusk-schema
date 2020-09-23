@@ -15,13 +15,12 @@ message Bid {
     JubJubCompressed commitment = 5;
     BlsScalar elegibility_ts = 6;
     BlsScalar expiration_ts = 7;
-    fixed64 bid_tree_storage_index = 8;
 }
 
 // Used to Request the creation of a Bid
 message BidTransactionRequest {
     BlsScalar k = 1;
-    fixed64 value = 2;
+    uint64 value = 2;
     JubJubCompressed secret = 3;
     StealthAddress pk_r = 4;
     BlsScalar seed = 5;
@@ -30,7 +29,7 @@ message BidTransactionRequest {
 }
 
 message BidTransaction {
-    fixed64 bid_tree_storage_index = 1;
+    uint64 bid_tree_storage_index = 1;
     Transaction tx = 2;
 }
 
