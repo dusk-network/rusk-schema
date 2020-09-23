@@ -1,0 +1,15 @@
+syntax = "proto3";
+package rusk;
+option go_package = "github.com/dusk-network/rusk-schema;rusk";
+
+import "transaction.proto";
+
+message StakeTransactionRequest {
+    fixed64 value = 1;
+    bytes public_key_bls = 2;
+}
+
+service StakeService {
+    // Generate a new Stake transaction.
+    rpc NewStake(StakeTransactionRequest) returns (Transaction) {}
+}

@@ -4,7 +4,7 @@ option go_package = "github.com/dusk-network/rusk-schema;rusk";
 
 import "basic_fields.proto";
 import "keys.proto";
-
+import "transaction.proto";
 
 // Bid representation
 message Bid {
@@ -15,25 +15,23 @@ message Bid {
     JubJubCompressed commitment = 5;
     BlsScalar elegibility_ts = 6;
     BlsScalar expiration_ts = 7;
-    uint64 bid_tree_storage_index = 8;
+    fixed64 bid_tree_storage_index = 8;
 }
 
 // Used to Request the creation of a Bid
 message BidTransactionRequest {
     BlsScalar k = 1;
-    uint64 value = 2;
+    fixed64 value = 2;
     JubJubCompressed secret = 3;
     StealthAddress pk_r = 4;
     BlsScalar seed = 5;
     fixed64 latest_consensus_round = 6;
     fixed64 latest_consensus_step = 7;
-    //rusk.Transaction tx = 8;
 }
 
 message BidTransaction {
-    Bid bid = 1;
-    BlsScalar bid_hash = 2;
-    // rusk.Transaction tx = 3;
+    fixed64 bid_tree_storage_index = 1;
+    Transaction tx = 2;
 }
 
 message FindBidRequest {
