@@ -13,15 +13,19 @@ message Crossover {
 message Fee {
     uint64 gas_limit = 1;
     uint64 gas_price = 2;
-    JubJubCompressed R = 3;
-    JubJubCompressed pk_r = 4;
+    StealthAddress address = 3;
 }
 
 message Note {
-    int32 note_type = 1;
+    enum NoteType {
+        TRANSPARENT = 0;
+        OBFUSCATED = 1;
+    }
+
+    NoteType note_type = 1;
     JubJubCompressed value_commitment = 2;
     JubJubScalar nonce = 3;
-    StealthAddress pk_r = 4;
+    StealthAddress address = 4;
     fixed64 pos = 5;
     PoseidonCipher encrypted_data = 6;
 }
