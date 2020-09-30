@@ -42,11 +42,24 @@ message BidList {
     repeated BlsScalar bid_hash_list = 2;
 }
 
+message WithdrawBidTransactionRequest {
+    JubJubCompressed pk = 1;
+    bytes sig = 2;
+    fixed64 bid_tree_storage_index = 3;
+}
+
+message ExtendBidRequest {
+    JubJubCompressed pk = 1;
+    bytes sig = 2;
+}
+
 service BidService {
     // Generate a new Bid and a proof of it's correctness.
     rpc NewBid(BidTransactionRequest) returns (BidTransaction) {}
     // Look for your owned Bids and return a list of them and it's hash repr
     rpc FindBid(FindBidRequest) returns (BidList) {}
-    // Request a wirhdraw of a Bid. Not supported yet.
-    //rpc NewWithdrawBid(WithdrawBidTransactionRequest) returns (WithdrawBidTransaction) {}
+    // Request a withdraw of a Bid. 
+    rpc NewWithdrawBid(WithdrawBidTransactionRequest) returns (Transaction) {}
+    // Extend a currently active Bid.
+    rpc ExtendBid(ExtendBidRequest) returns (Transaction) {}
 }
