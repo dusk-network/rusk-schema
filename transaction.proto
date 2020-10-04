@@ -6,9 +6,9 @@ import "basic_fields.proto";
 import "keys.proto";
 
 message Crossover {
-    JubJubCompressed value_comm = 1;
+    JubJubCompressed value_commitment = 1;
     JubJubScalar nonce = 2;
-    PoseidonCipher encypted_data = 3;
+    PoseidonCipher encrypted_data = 3;
 }
 message Fee {
     uint64 gas_limit = 1;
@@ -32,7 +32,7 @@ message Note {
 
 message TransactionPayload {
     BlsScalar anchor = 1;
-    repeated BlsScalar nullifier = 2;
+    repeated BlsScalar nullifiers = 2;
     Crossover crossover = 3;
     repeated Note notes = 4;
     Fee fee = 5;
