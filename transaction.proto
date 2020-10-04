@@ -2,18 +2,17 @@ syntax = "proto3";
 package rusk;
 option go_package = "github.com/dusk-network/rusk-schema;rusk";
 
-import "basic_fields.proto";
 import "keys.proto";
 
 message Crossover {
-    JubJubCompressed value_commitment = 1;
-    JubJubScalar nonce = 2;
-    PoseidonCipher encrypted_data = 3;
+    bytes value_commitment = 1; // JubJubCompressed
+    bytes nonce = 2; // JubJubScalar
+    bytes encrypted_data = 3;
 }
 message Fee {
     uint64 gas_limit = 1;
     uint64 gas_price = 2;
-    StealthAddress address = 3;
+    StealthAddress stealth_address = 3;
 }
 
 message Note {
@@ -23,11 +22,11 @@ message Note {
     }
 
     NoteType note_type = 1;
-    JubJubCompressed value_commitment = 2;
-    JubJubScalar nonce = 3;
-    StealthAddress address = 4;
+    bytes value_commitment = 2; // JubJubCompressed
+    bytes nonce = 3; // JubJubScalar
+    StealthAddress stealth_address = 4;
     fixed64 pos = 5;
-    PoseidonCipher encrypted_data = 6;
+    bytes encrypted_data = 6;
 }
 
 message Transaction {
