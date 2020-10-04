@@ -9,16 +9,16 @@ message SecretKey {
 
 message ViewKey {
     bytes a = 1; // JubJubScalar
-    bytes B = 2; // JubJubCompressed, b * G
+    bytes b_g = 2; // JubJubCompressed, B = b * G
 }
 
 message PublicKey {
-    bytes A = 1; // JubJubCompressed, a * G
-    bytes B = 2; // JubJubCompressed, b * G
+    bytes a_g = 1; // JubJubCompressed, A = a * G
+    bytes b_g = 2; // JubJubCompressed, B = b * G
 }
 
 message StealthAddress {
-    bytes R = 1; // JubJubCompressed, r * G
+    bytes r_g = 1; // JubJubCompressed, R = r * G
     bytes pk_r = 2; // JubJubCompressed
 }
 
