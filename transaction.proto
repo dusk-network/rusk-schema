@@ -30,28 +30,17 @@ message Note {
     PoseidonCipher encrypted_data = 6;
 }
 
-message TransactionPayload {
-    BlsScalar anchor = 1;
-    repeated BlsScalar nullifiers = 2;
-    Crossover crossover = 3;
-    repeated Note notes = 4;
-    Fee fee = 5;
-    Proof spending_proof = 6;
-    bytes call_data = 7;
-}
-
 message Transaction {
     uint32 version = 1;
     uint32 type = 2;
-    TransactionPayload tx_payload = 3;
+    bytes payload = 3;
 }
 
 message TransactionRequest {
     bytes contract_address = 1;
     uint32 op_code = 2;
     bytes arguments = 3;
-    fixed64 gas_limit = 4;
-    fixed64 gas_price = 5;
+    Fee fee = 4;
 }
 
 service TransactionService {
