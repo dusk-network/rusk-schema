@@ -12,8 +12,8 @@ message Bid {
     bytes nonce = 3; // BlsScalar
     StealthAddress stealth_address = 4;
     bytes commitment = 5; // JubJubCompressed
-    bytes elegibility = 6; // BlsScalar
-    bytes expiration = 7; // BlsScalar
+    fixed64 elegibility = 6; // u64
+    fixed64 expiration = 7; // u64
 }
 
 // Used to Request the creation of a Bid
@@ -22,7 +22,7 @@ message BidTransactionRequest {
     uint64 value = 2;
     bytes secret = 3; // JubJubCompressed
     StealthAddress stealth_address = 4;
-    bytes seed = 5; // BlsScalar
+    byte seed = 5; // u8
     fixed64 latest_consensus_round = 6;
     fixed64 latest_consensus_step = 7;
     fixed64 gas_limit = 8;
