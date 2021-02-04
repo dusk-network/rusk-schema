@@ -1,0 +1,17 @@
+syntax = "proto3";
+package rusk;
+option go_package = "github.com/dusk-network/rusk-schema;rusk";
+
+message GetBalanceRequest {
+    ViewKey vk = 1;
+}
+
+message GetBalanceResponse {
+    fixed64 unlocked_balance = 1;
+    fixed64 locked_balance = 2;
+}
+
+service Wallet {
+    // Get Wallet balance
+    rpc GetBalance(GetBalanceRequest) returns (BalanceResponse) {};
+}
