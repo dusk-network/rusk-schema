@@ -43,8 +43,15 @@ message GetProvisionersResponse {
     repeated Provisioner provisioners = 1;
 }
 
+message GetHeightRequest {}
+
+message GetHeightResponse {
+    uint64 height = 1;
+}
+
 service State {
     rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (VerifyStateTransitionResponse) {}
     rpc ExecuteStateTransition(ExecuteStateTransitionRequest) returns (ExecuteStateTransitionResponse) {}
     rpc GetProvisioners(GetProvisionersRequest) returns (GetProvisionersResponse) {}
+    rpc GetHeight(GetHeightRequest) returns (GetHeightResponse) {}
 }
