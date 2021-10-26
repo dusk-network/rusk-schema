@@ -34,7 +34,8 @@ message ExecuteStateTransitionResponse {
 
 message Provisioner {
     bytes public_key_bls = 1;
-    repeated Stake stakes = 2;
+    bytes raw_public_key_bls = 2;
+    repeated Stake stakes = 3;
 }
 
 message GetProvisionersRequest {}
