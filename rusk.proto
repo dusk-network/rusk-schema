@@ -14,7 +14,7 @@ import "reward.proto";
 message VerifyStateTransitionRequest {
     repeated Transaction txs = 1;
     fixed64 height = 2;
-    bytes seed = 3;
+    byte seed = 3;
 }
 
 message VerifyStateTransitionResponse {
@@ -24,7 +24,7 @@ message VerifyStateTransitionResponse {
 message ExecuteStateTransitionRequest {
     repeated Transaction txs = 1;
     fixed64 height = 2;
-    bytes seed = 3;
+    byte seed = 3;
 }
 
 message ExecuteStateTransitionResponse {
