@@ -1,6 +1,5 @@
 syntax = "proto3";
 package rusk;
-option go_package = "github.com/dusk-network/rusk-schema;rusk";
 
 import "keys.proto";
 
@@ -35,15 +34,22 @@ message Transaction {
     bytes payload = 3;
 }
 
-message TransactionRequest {
-    bytes contract_address = 1;
-    uint32 op_code = 2;
-    bytes arguments = 3;
-    Fee fee = 4;
-}
+message ExecutedTransaction {
+    message Error {
+        enum Code {
+            UnknownContract = 0;
+            ContractPanic = 1;
+            OutOfGas = 2;
+            Other = 3;
+        }
 
-service TransactionService {
-    // A generic method to create a transaction which requires
-    // no special fields (no crossover, outputs, or specific proofs).
-    rpc NewTransaction(TransactionRequest) returns (Transaction) {}
-}
+        Code code = 1;
+        bytes contract_id = 2;
+        string data = 3;
+    }
+
+    Transaction tx = 1;
+    bytes tx_hash = 2;
+    uint64 gas_spent = 3;
+    optional Error error = 4 ;
+ }
